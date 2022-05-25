@@ -5,6 +5,7 @@ import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /*
@@ -16,6 +17,7 @@ public class Kata3 {
     public static List<Integer> execute() {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        return ImmutableList.of(1, 2, 3);
+
+        return null;
     }
 }
