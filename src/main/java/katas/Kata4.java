@@ -21,10 +21,12 @@ public class Kata4 {
 
         return movieLists.stream()
                 .map(MovieList::getVideos)
-                .flatMap(movies -> movies.stream().map(movie -> ImmutableMap.of("id", movie.getId(), "title", movie.getTitle(), "boxart", movie.getBoxarts()
-                        .stream().filter(boxArt -> boxArt.getWidth() == 150 && boxArt.getHeight() == 200))))
+                .flatMap(movies -> movies.stream()
+                        .map(movie -> ImmutableMap.of("id", movie.getId(), "title", movie.getTitle(), "boxart", movie.getBoxarts()
+                        .stream()
+                                .filter(boxArt -> boxArt.getWidth() == 150 && boxArt.getHeight() == 200)
+                                .map(x -> x.getUrl()).findFirst().get())))
                 .collect(Collectors.toList());
-
 
 
     }
