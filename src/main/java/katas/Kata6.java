@@ -1,5 +1,6 @@
 package katas;
 
+import model.BoxArt;
 import model.Movie;
 import util.DataUtil;
 
@@ -14,6 +15,10 @@ public class Kata6 {
     public static String execute() {
         List<Movie> movies = DataUtil.getMovies();
 
-        return "someUrl";
+        return movies.stream()
+                .flatMap(movie -> movie.getBoxarts().stream())
+                .reduce((x, y) -> (x.getWidth()*x.getHeight())>=(y.getWidth()*y.getHeight()) ? x : y)
+                .map(BoxArt::getUrl).get();
     }
+
 }

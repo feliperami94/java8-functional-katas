@@ -19,8 +19,9 @@ public class Kata2 {
         List<Movie> movies = DataUtil.getMovies();
 
 
-        List<Integer> filteredIds = movies.stream().filter(movie -> movie.getRating()==5.0).map(movie -> movie.getId()).collect(Collectors.toList());
-
-        return filteredIds;
+        return movies.stream()
+                .filter(movie -> movie.getRating()==5.0)
+                .map(Movie::getId)
+                .collect(Collectors.toList());
     }
 }

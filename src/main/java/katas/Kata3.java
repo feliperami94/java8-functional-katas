@@ -7,6 +7,7 @@ import util.DataUtil;
 
 import java.lang.reflect.Array;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
     Goal: Use map() and flatMap() to project and flatten the movieLists into an array of video ids (flatMap(c -> c.stream()))
@@ -18,6 +19,9 @@ public class Kata3 {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
 
-        return null;
+        return movieLists.stream()
+                .map(MovieList::getVideos)
+                .flatMap(movies -> movies.stream().map(Movie::getId))
+                .collect(Collectors.toList());
     }
 }
